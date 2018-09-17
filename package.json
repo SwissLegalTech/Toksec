@@ -7,6 +7,7 @@
     "test": "test"
   },
   "scripts": {
+    "dev": "lite-server",
     "test": "echo \\\"Error: no test specified\\\" && exit 1"
   },
   "repository": {
@@ -18,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/SwissLegalTech/Toksec/issues"
   },
-  "homepage": "https://github.com/SwissLegalTech/Toksec#readme"
+  "homepage": "https://github.com/SwissLegalTech/Toksec#readme",
+  "devDependencies": {
+    "lite-server": "^2.4.0"
+  }
 }
