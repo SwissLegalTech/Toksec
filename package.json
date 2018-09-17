@@ -1,0 +1,22 @@
+{
+  "name": "toksec",
+  "version": "0.0.1",
+  "description": "Compliant Security Tokens Framework",
+  "main": "truffle.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \\\"Error: no test specified\\\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SwissLegalTech/Toksec.git"
+  },
+  "author": "xalava",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/SwissLegalTech/Toksec/issues"
+  },
+  "homepage": "https://github.com/SwissLegalTech/Toksec#readme"
+}
