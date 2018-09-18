@@ -1,13 +1,10 @@
 pragma solidity ^0.4.24;
-
-// import "github.com/OpenZeppelin/zeppelin-solidity/contracts/math/SafeMath.sol";
-// import "github.com/OpenZeppelin/zeppelin-solidity/contracts/token/ERC20/IERC20.sol";
-
-import 'openzeppelin-solidity/contracts/math/SafeMath.sol';
-import 'openzeppelin-solidity/contracts/token/ERC20/IERC20.sol';
-
-
-contract Toksec is IERC20 {
+ 
+ import "github.com/OpenZeppelin/zeppelin-solidity/contracts/math/SafeMath.sol";
+ import "github.com/OpenZeppelin/zeppelin-solidity/contracts/token/ERC20/IERC20.sol";
+ 
+ 
+contract Toksec {
   using SafeMath for uint256;
 
   mapping (address => uint) private _balances;
@@ -24,9 +21,9 @@ contract Toksec is IERC20 {
 
   event Approval(address indexed owner, address indexed spender, uint256 value );
 
-  constructor(string company, string identifier, uint256 nbShares) public {
+  constructor(string company, uint256 nbShares) public {
     _issuer = msg.sender; // _issuer is identified to msg.sender for simplication purposes
-    _identifier = identifier; 
+    _identifier = "FR81939614400019"; 
     _company = company;
     _balances[msg.sender] = nbShares;
     _totalSupply = nbShares;
@@ -44,10 +41,10 @@ contract Toksec is IERC20 {
     return _balances[owner];
   }
 
-  function allowance(address owner, address spender) public view returns (uint256){
+/*  function allowance(address owner, address spender) public view returns (uint256){
     return _allowed[owner][spender];
   }
-    
+    */
   function transfer(address to, uint256 value) public returns (bool) {  
     require(value <= _balances[msg.sender]);
     require(to != address(0));
@@ -57,7 +54,7 @@ contract Toksec is IERC20 {
     emit Transfer(msg.sender, to, value);
     return true;
   }
-
+/*
   function approve(address spender, uint256 value) public returns (bool) {
     require(spender != address(0));
 
@@ -65,7 +62,7 @@ contract Toksec is IERC20 {
     emit Approval(msg.sender, spender, value);
     return true;
   }
-
+*/
   function transferFrom(address from, address to, uint256 value) public returns (bool){
     require(value <= _balances[from]);
     require(value <= _allowed[from][msg.sender]);
@@ -101,5 +98,53 @@ contract Toksec is IERC20 {
   // }
 
 
+
+// MARKETPLACE  
+  
+  struct offer{
+    uint256 price;
+    uint256 amount;
+    address seller;
+  }
+
+  offer[] private _offers;
+  uint256 private _nbOffers;
+  
+
+  event toksecPurchase(address indexed purchaser, address indexed seller, uint256 price, uint256 amount );
+
+  
+  function offerInfo(uint256 index) public view returns(uint,address){
+      return (_offers[index].price,_offers[index].seller);
+  }
+  
+    function nbOffers() public view returns(uint){
+      return _nbOffers;
+  }
+
+  function listOffer(uint256 price, uint256 amount) public{
+    require(balanceOf(msg.sender)>=amount);
+    // TODO allowance
+    offer memory newOffer;
+    newOffer.price = price;
+    newOffer.amount = amount;
+    newOffer.seller = msg.sender;
+    _offers.push(newOffer);
+  }
+
+  function buyOffer(uint256 offerNumber,uint256 amountPurchased) public payable{
+    //!!Using offerNumber as reference may cause errors if > 1 purchase per block
+    require(msg.value>=_offers[offerNumber].price.mul(amountPurchased));
+    //currently expect to buy the full offer, partial could be done
+    require(amountPurchased == _offers[offerNumber].amount );
+    //require(_offers[offerNumber].amount<=amountPurchased);
+    transferFrom(msg.sender, _offers[offerNumber].seller, _offers[offerNumber].amount);
+
+    emit toksecPurchase(msg.sender, _offers[offerNumber].seller, _offers[offerNumber].price, _offers[offerNumber].amount );
+    if (offerNumber < _nbOffers.sub(1)) {
+      _offers[offerNumber] = _offers[_nbOffers-1];
+    }
+    _nbOffers.sub(1);
+  }
 
 }
