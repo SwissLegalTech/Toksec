@@ -16,9 +16,9 @@ toksec = {
     //     toksec.web3Provider = new Web3.providers.HttpProvider('http://localhost:8545');
     //   }
     //   web3 = new Web3(toksec.web3Provider);
-
-    $("#userBalance").text(web3.eth.getBalance(web3.eth.coinbase).e);
-    $("#userAddress").text(web3.eth.coinbase);
+    toksec.user = web3.eth.coinbase;
+    $("#userBalance").text(web3.eth.getBalance(toksec.user).e);
+    $("#userAddress").text(toksec.user);
     // web3.setProvider(new web3.providers.HttpProvider('http://' + BasicAuthUsername + ':' + BasicAuthPassword + '@localhost:8545'));
     return toksec.initContract();
 
@@ -312,7 +312,6 @@ toksec = {
     ]);
 
     toksec.instance = toksec.contract.at("0xd565adb65f1e73793229d24d9c68d1df29cd11be");
-    console.log(toksec.instance);
     // $.getJSON('Toksec.json', function(data) {
     //   // var artefact = data
 
@@ -341,6 +340,7 @@ toksec = {
       toksec.writeData();
   },
   writeData: function(){
+    toksec.refreshTime = new Date();
     $("#companyName").text(toksec.instance.company());
     $("#companyIdentifier").text("FR081240182431840");
     $(".companyNbShares").text(toksec.instance.totalSupply());
@@ -389,11 +389,24 @@ toksec = {
     Chartist.Pie('#chartPreferences', dataPreferences, optionsPreferences);
 
     Chartist.Pie('#chartPreferences', {
-        labels: ['53%', '36%', '11%'],
-        series: [53, 36, 11]
+        labels: ['53%', '25%', '13%','9%'],
+        series: [53, 25, 13, 9]
     });
 
 
 
-  }
+  },
+  showNotification: function(icon, text, type) {
+    $.notify({
+        icon: "nc-icon " + icon,
+        message: "<br> <b>"+ text + "</b><br> ID: " + toksec.user + "<br>&nbsp;&nbsp&nbsp;&nbsp&nbsp;&nbsp;" + $("#name").val() + " " + $("#surname").val()
+    }, {
+        type: type,
+        timer: 8000,
+        placement: {
+            from: "top",
+            align: "right"
+        }
+    });
+  },
 };

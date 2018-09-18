@@ -6,7 +6,7 @@
     <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
     <link rel="icon" type="image/png" href="../assets/img/favicon.ico">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <title>Light Bootstrap Dashboard - Free Bootstrap 4 Admin Dashboard by Creative Tim</title>
+    <title>Toksec - embedded compliance for tokenised securities</title>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
     <!--     Fonts and icons     -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
@@ -103,9 +103,10 @@
                                 </div>
                                 <div class="card-footer ">
                                     <div class="legend">
-                                        <i class="fa fa-circle text-info"></i> 0xE898
-                                        <i class="fa fa-circle text-danger"></i> 0x1427
-                                        <i class="fa fa-circle text-warning"></i> 0x8987
+                                        <i class="fa fa-circle text-info"></i> 0x97b71
+                                        <i class="fa fa-circle text-danger"></i> 0x41956
+                                        <i class="fa fa-circle text-warning"></i> 0xfedb9
+                                        <i class="fa fa-circle text-secondary"></i> 0x89873
                                     </div>
                                     <hr>
                                     <div class="stats">
@@ -169,13 +170,13 @@
                                               <div class="col-md-6 pr-1">
                                                   <div class="form-group">
                                                       <label>First Name</label>
-                                                      <input type="text" class="form-control" placeholder="Company" value="Alice">
+                                                      <input type="text" class="form-control" placeholder="Company" value="Bob" id="name">
                                                   </div>
                                               </div>
                                               <div class="col-md-6 pl-1">
                                                   <div class="form-group">
                                                       <label>Last Name</label>
-                                                      <input type="text" class="form-control" placeholder="Last Name" value="Wonder">
+                                                      <input type="text" class="form-control" placeholder="Last Name" value="Wonder" id="surname">
                                                   </div>
                                               </div>
                                           </div>
@@ -225,10 +226,10 @@
                                     <p>Total number of shares : <span class="companyNbShares">0000</span></p>
                                     <div class="row justify-content-center">
                                         <div class="col-md-3 col-lg-3">
-                                            <button class="btn btn-success btn-block" onclick="">Buy</button>
+                                            <button class="btn btn-success btn-block" data-toggle="modal" data-target="#buyModal">Buy</button>
                                         </div>
                                         <div class="col-md-3 col-lg-3">
-                                            <button class="btn btn-warning btn-block" onclick="">Sell</button>
+                                            <button class="btn btn-warning btn-block" data-toggle="modal" data-target="#sellModal">Sell</button>
                                         </div>
 
                                     </div>
@@ -244,18 +245,17 @@
 
                               <div class="card ">
                                   <div class="card-header ">
-                                      <h4 class="card-title">Regulatory </h4>
+                                      <h4 class="card-title">Regulatory</h4>
                                       <p class="card-category"> </p>
                                   </div>
                                   <div class="card-body ">
                                     <div>
-                                      <button class="btn btn-danger btn-fill btn-block">Notify Tax Authority</button>
-                                      <button class="btn btn-info btn-fill btn-block">Notify Company Register of beneficial ownership</button>
+                                      <button class="btn btn-danger btn-fill btn-block"  onclick="toksec.showNotification('nc-bank','Tax Authority Notified', 'danger')">Notify Tax Authority</button>
+                                      <button class="btn btn-info btn-fill btn-block" onclick="toksec.showNotification('nc-bullet-list-67','Company Register of beneficial ownership', 'info')">Notify Company Register of beneficial ownership</button>
                                     </div>
 
                                   </div>
                                   <div class="card-footer ">
-
                                   </div>
                               </div>
 
@@ -287,23 +287,23 @@
                                               <tr>
                                                   <td>1</td>
                                                   <td>500</td>
-                                                  <td>300 wei</td>
-                                                  <td>0x324</td>
-                                                  <td>0x557</td>
+                                                  <td>61 €</td>
+                                                  <td>0x97b7139dbda58c394294011f776c388be85d3b58</td>
+                                                  <td>0xfedb9bb7b51c4586be3620bb042b8531f2d562f6</td>
                                               </tr>
                                               <tr>
                                                   <td>2</td>
                                                   <td>100</td>
-                                                  <td>300 wei</td>
-                                                  <td>0x324</td>
-                                                  <td>0x557</td>
+                                                  <td>0,41 ETH</td>
+                                                  <td>0x97b7139dbda58c394294011f776c388be85d3b58</td>
+                                                  <td>0x5d801262b3f22bba682aeba732029dad015e3cdc</td>
                                               </tr>
                                               <tr>
                                                   <td>3</td>
-                                                  <td>500</td>
-                                                  <td>300 wei</td>
-                                                  <td>0x324</td>
-                                                  <td>0x557</td>
+                                                  <td>450</td>
+                                                  <td>73 €</td>
+                                                  <td>0x41956c17145dc51d6c241ed54dde919621a6bf89</td>
+                                                  <td>0x97b7139dbda58c394294011f776c388be85d3b58</td>
                                               </tr>
 
                                           </tbody>
@@ -338,14 +338,14 @@
                                               </thead>
                                               <tbody>
                                                   <tr>
-                                                      <td>1</td>
-                                                      <td>Dakota Rice</td>
-                                                      <td>Curtea Johannes Honterus 2</td>
-                                                      <td>Brasov</td>
+                                                      <td>0x41956c17145dc51d6c241ed54dde919621a6bf89</td>
+                                                      <td>Alice Wonder</td>
+                                                      <td>Bld Mihail Kogalniceanu, nr. 8</td>
+                                                      <td>Bucaresti</td>
                                                       <td>200 €</td>
                                                   </tr>
                                                   <tr>
-                                                      <td>2</td>
+                                                      <td>0x97b7139dbda58c394294011f776c388be85d3b58</td>
                                                       <td>Minerva Hooper</td>
                                                       <td>Nr. 5 Splai Bahlui,</td>
                                                       <td>Lasi</td>
@@ -353,10 +353,10 @@
 
                                                   </tr>
                                                   <tr>
-                                                      <td>3</td>
+                                                      <td>0xfedb9bb7b51c4586be3620bb042b8531f2d562f6</td>
                                                       <td>Sage Rodriguez</td>
-                                                      <td>Calea Vitan 55-59</td>
-                                                      <td>Bucaresti</td>
+                                                      <td>Curtea Johannes Honterus 2</td>
+                                                      <td>Brasov</td>
                                                       <td>0 €</td>
                                                   </tr>
   
@@ -412,6 +412,98 @@
             </footer>
         </div>
     </div>
+
+
+
+  <!-- Mini Modals -->
+  <div class="modal fade modal-mini modal-success" id="buyModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+          <div class="modal-content">
+              <div class="modal-header justify-content-center">
+                <div class="modal-profile">
+                  <i class="nc-icon nc-stre-down"></i>
+                </div>
+              </div>
+              <div class="modal-body text-center">
+                <div class="row">
+                  <h4></h4>
+                </div>
+                <div class="row">
+                      <div class="col-md-6 pr-1">
+                          <div class="form-group">
+                              <label>Market Price</label>
+                              <p > 74 €</p>
+                          </div>
+                      </div>
+                      <div class="col-md-6 pl-1">
+                          <div class="form-group">
+                              <label>Place Order</label>
+                              <input type="text" class="form-control" placeholder="Last Name" value="70 €">
+                          </div>
+
+                      </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 pr-1">
+    
+                        <button type="button" class="btn btn-success " data-dismiss="modal">Buy</button>
+                    </div>
+                    <div class="col-md-6 pl-1">
+
+                        <button type="button" class="btn btn-success " data-dismiss="modal">Buy</button>
+
+                    </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                  <!-- <button type="button" class="btn btn-link btn-simple">Back</button> -->
+                  <button type="button" class="btn btn-link btn-simple pull-righ" data-dismiss="modal">Close</button>
+              </div>
+          </div>
+      </div>
+  </div>
+
+  <div class="modal fade modal-mini modal-warning" id="sellModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+          <div class="modal-content">
+              <div class="modal-header justify-content-center">
+                  <div class="modal-profile">
+                      <i class="nc-icon nc-stre-up"></i>
+                    </div>
+                  </div>
+                  <div class="modal-body text-center">
+                      <div class="row">
+
+                    <h4></h4>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6 pr-1">
+                          <div class="form-group">
+                              <label>Shares</label>
+                              <input type="text" class="form-control" value="200" >
+                          </div>
+                      </div>
+                      <div class="col-md-6 pl-1">
+                          <div class="form-group">
+                              <label>Price</label>
+                              <input type="text" class="form-control" value="23 €" >
+                          </div>
+                      </div>
+                  </div>
+                  <div class="row">
+                      <div class="col-md-12 pr-1">
+                        <button type="button" class="btn btn-warning" data-dismiss="modal">Sell</button>
+                      </div>
+                  </div>
+              </div>
+              <div class="modal-footer">
+                  <!-- <button type="button" class="btn btn-link btn-simple">Back</button> -->
+                  <button type="button" class="btn btn-link btn-simple pull-right" data-dismiss="modal">Close</button>
+              </div>
+          </div>
+      </div>
+  </div>
+  <!--  End Modal -->
 
 </body>
 <!--   Core JS Files   -->
