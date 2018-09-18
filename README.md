@@ -14,7 +14,7 @@ The following information of any trade is publicly available:
 - unit price at the time of sale
 - number of units traded
 
-##### notification to tax authority
+#### notification to tax authority
 If the client chooses to notify his tax authority, the interface pulls all relevant information from the underlying smart contract, i.e.:
 - public key of the seller
 - identity of the seller (name, first name, address, tax residence)
