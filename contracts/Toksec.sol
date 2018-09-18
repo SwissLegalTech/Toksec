@@ -1,10 +1,13 @@
 pragma solidity ^0.4.24;
 
 // import "github.com/OpenZeppelin/zeppelin-solidity/contracts/math/SafeMath.sol";
+// import "github.com/OpenZeppelin/zeppelin-solidity/contracts/token/ERC20/IERC20.sol";
+
 import 'openzeppelin-solidity/contracts/math/SafeMath.sol';
+import 'openzeppelin-solidity/contracts/token/ERC20/IERC20.sol';
 
 
-contract Toksec {
+contract Toksec is IERC20 {
   using SafeMath for uint256;
 
   mapping (address => uint) private _balances;
@@ -96,7 +99,5 @@ contract Toksec {
   // function canSend(address _from, address _to, bytes32 _tranche, uint256 _amount, bytes _data) external view returns (byte, bytes32, bytes32){
   //     return ;
   // }
-
-
 
 }
