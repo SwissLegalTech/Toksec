@@ -7,16 +7,21 @@ Etherium currently is the leading technology for tokenising securities. When dea
 ### embedded compliance while maintaining and even enhancing privacy
 When trading tokenised shares on the Toksec platform, the client can opt to notify his tax authority and/or the register of the beneficial owners of the company whose share have been traded with one click on the relevant button. Privacy on the blockchain level is maintained because the client declares his public keys to the tax authority and/or the company's register of beneficial owners. Privacy can even be enhanced when using multiple public keys.
 
-#### notification to tax authority
-If the client chooses to notify his tax authority, the interface pulls all relevant information from the underlying smart contract, i.e.:
+#### publicly available information on the blockchain of any trade in tokenised securities
+The following information of any trade is publicly available:
 - public key of the seller
 - public key of the buyer
-- unit price at the time of acquisition
 - unit price at the time of sale
 - number of units traded
+
+##### notification to tax authority
+If the client chooses to notify his tax authority, the interface pulls all relevant information from the underlying smart contract, i.e.:
+- public key of the seller
+- identity of the seller (name, first name, address, tax residence)
+- unit price at the time of acquisition
 
 #### notification to the company's register of beneficial owners
 If the client chooses to notify the register of beneficial owners of the company whose tokenised shares have been traded, the interface pulls all relevant information from the underlying smart contract, i.e.:
 - public key of the buyer
+- identity of the buyer (name, first name, address)
 - time of acquisition
-- number of units traded
