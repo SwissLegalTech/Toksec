@@ -24,46 +24,337 @@ toksec = {
 
   },
   initContract: function(){
-    $.getJSON('Toksec.json', function(data) {
-      // var artefact = data
+    toksec.contract = web3.eth.contract([
+      {
+        "constant": true,
+        "inputs": [],
+        "name": "totalSupply",
+        "outputs": [
+          {
+            "name": "",
+            "type": "uint256"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "constant": false,
+        "inputs": [
+          {
+            "name": "from",
+            "type": "address"
+          },
+          {
+            "name": "to",
+            "type": "address"
+          },
+          {
+            "name": "value",
+            "type": "uint256"
+          }
+        ],
+        "name": "transferFrom",
+        "outputs": [
+          {
+            "name": "",
+            "type": "bool"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "constant": true,
+        "inputs": [
+          {
+            "name": "index",
+            "type": "uint256"
+          }
+        ],
+        "name": "offerInfo",
+        "outputs": [
+          {
+            "name": "",
+            "type": "uint256"
+          },
+          {
+            "name": "",
+            "type": "address"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "constant": true,
+        "inputs": [],
+        "name": "company",
+        "outputs": [
+          {
+            "name": "",
+            "type": "string"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "constant": true,
+        "inputs": [
+          {
+            "name": "owner",
+            "type": "address"
+          }
+        ],
+        "name": "balanceOf",
+        "outputs": [
+          {
+            "name": "",
+            "type": "uint256"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "constant": false,
+        "inputs": [
+          {
+            "name": "to",
+            "type": "address"
+          },
+          {
+            "name": "value",
+            "type": "uint256"
+          }
+        ],
+        "name": "transfer",
+        "outputs": [
+          {
+            "name": "",
+            "type": "bool"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "constant": false,
+        "inputs": [
+          {
+            "name": "price",
+            "type": "uint256"
+          },
+          {
+            "name": "amount",
+            "type": "uint256"
+          }
+        ],
+        "name": "listOffer",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "constant": false,
+        "inputs": [
+          {
+            "name": "offerNumber",
+            "type": "uint256"
+          },
+          {
+            "name": "amountPurchased",
+            "type": "uint256"
+          }
+        ],
+        "name": "buyOffer",
+        "outputs": [],
+        "payable": true,
+        "stateMutability": "payable",
+        "type": "function"
+      },
+      {
+        "constant": true,
+        "inputs": [],
+        "name": "nbOffers",
+        "outputs": [
+          {
+            "name": "",
+            "type": "uint256"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "constant": false,
+        "inputs": [
+          {
+            "name": "amount",
+            "type": "uint256"
+          }
+        ],
+        "name": "newIssuance",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "constant": true,
+        "inputs": [],
+        "name": "issuable",
+        "outputs": [
+          {
+            "name": "",
+            "type": "bool"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "name": "company",
+            "type": "string"
+          },
+          {
+            "name": "nbShares",
+            "type": "uint256"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "constructor"
+      },
+      {
+        "anonymous": false,
+        "inputs": [
+          {
+            "indexed": true,
+            "name": "from",
+            "type": "address"
+          },
+          {
+            "indexed": true,
+            "name": "to",
+            "type": "address"
+          },
+          {
+            "indexed": false,
+            "name": "value",
+            "type": "uint256"
+          }
+        ],
+        "name": "Transfer",
+        "type": "event"
+      },
+      {
+        "anonymous": false,
+        "inputs": [
+          {
+            "indexed": true,
+            "name": "owner",
+            "type": "address"
+          },
+          {
+            "indexed": true,
+            "name": "spender",
+            "type": "address"
+          },
+          {
+            "indexed": false,
+            "name": "value",
+            "type": "uint256"
+          }
+        ],
+        "name": "Approval",
+        "type": "event"
+      },
+      {
+        "anonymous": false,
+        "inputs": [
+          {
+            "indexed": true,
+            "name": "purchaser",
+            "type": "address"
+          },
+          {
+            "indexed": true,
+            "name": "seller",
+            "type": "address"
+          },
+          {
+            "indexed": false,
+            "name": "price",
+            "type": "uint256"
+          },
+          {
+            "indexed": false,
+            "name": "amount",
+            "type": "uint256"
+          }
+        ],
+        "name": "toksecPurchase",
+        "type": "event"
+      }
+    ]);
 
-      // console.log("data", data);
-      // toksec.artefact = artefact;
-      // console.log(TruffleContract(artefact))
-      toksec.ctrct = TruffleContract(data);
-      // // Set the provider for our contract.
-      toksec.ctrct.setProvider(web3.currentProvider);
-      // toksec.ctrct= web3.eth.contract(data.abi);
+    toksec.instance = toksec.contract.at("0xd565adb65f1e73793229d24d9c68d1df29cd11be");
+    console.log(toksec.instance);
+    // $.getJSON('Toksec.json', function(data) {
+    //   // var artefact = data
 
-      // return App.markAdopted();
+    //   // console.log("data", data);
+    //   // toksec.artefact = artefact;
+    //   // console.log(TruffleContract(artefact))
+    //   toksec.ctrct = TruffleContract(data);
+    //   // // Set the provider for our contract.
+    //   toksec.ctrct.setProvider(web3.currentProvider);
+    //   // toksec.ctrct= web3.eth.contract(data.abi);
+
+    //   // return App.markAdopted();
    
-      // console.log("ctrc",toksec.ctrct);
-      // toksec.ctrct=  web3.eth.contract(data.abi).at("0xd565adb65f1e73793229d24d9c68d1df29cd11be");
+    //   // console.log("ctrc",toksec.ctrct);
+    //   // toksec.ctrct=  web3.eth.contract(data.abi).at("0xd565adb65f1e73793229d24d9c68d1df29cd11be");
 
 
-      return toksec.writeData();
+    //   return toksec.writeData();
 
   
-    });
+    // });
     
 
 
     // $("#companyName").text( toksec.contract.company())
-
+      toksec.writeData();
   },
   writeData: function(){
-    // toksec.ctrct.company.call()
-    toksec.ctrct.deployed().then(function(instance) {
-      console.log("instace",instance)
-      instance.company.call();
-    })
-    .then(function(companyName) {
-      console.log(companyName);
-      $("#companyName").text(companyName);
+    $("#companyName").text(toksec.instance.company());
+    $("#companyIdentifier").text("FR081240182431840");
+    $(".companyNbShares").text(toksec.instance.totalSupply());
 
-      }).catch(function(err) {
-        console.log(err.message);
-    });
+    $("#userShares").text(toksec.instance.balanceOf(web3.eth.coinbase));
+    // toksec.ctrct.deployed().then(function(instance) {
+    //   console.log("instace",instance)
+    //   instance.company.call();
+    // })
+    // .then(function(companyName) {
+    //   console.log(companyName);
+    //   $("#companyName").text(companyName);
+
+    //   })
     // .then(function(adopters) {
     //   for (i = 0; i < adopters.length; i++) {
     //     if (adopters[i] !== '0x0000000000000000000000000000000000000000') {
