@@ -52,12 +52,13 @@
                         </ul>
                         <ul class="navbar-nav ml-auto">
                             <li class="nav-item">
-                                <a class="nav-link" href="#pablo">
-                                    <span class="no-icon">Alice</span>
-                                </a>
+                                <!-- <a class="nav-link" href="">
+                                    <span class="no-icon">Alice &nbsp;</span> 
+                                    <span id="userBalance"></span> <i class="nc-icon nc-money-coins"></i>
+                                </a> -->
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#pablo">
+                                <a class="nav-link" href="">
                                     <span class="no-icon">Log out</span>
                                 </a>
                             </li>
@@ -79,12 +80,16 @@
                               <div class="card-body ">
                                   <p class="">Identifier : <span id="companyIdentifier"> XYXYXYXY</span></p>
                                   <p class="" >Total number of shares:  <span id="companyNbShares"> 0000</span></p>
+                                  <p class="" >Country of registration:  <span id="">Germany</span></p>
+                                  <p class="" >Type of shares:  <span id="">Registered</span></p>
+                                
                               </div>
                               <div class="card-footer ">
                                    <div class="stats">
                                       <i class="fa fa-history"></i> Updated 5 minutes ago
                                   </div>
                               </div>
+                              
                           </div>
                       </div>
                         <div class="col-md-4">
@@ -145,10 +150,16 @@
                                   <div class="card-body">
                                       <form>
                                           <div class="row">
-                                              <div class="col-md-6 pr-1">
+                                              <div class="col-md-10 pr-1">
                                                   <div class="form-group">
-                                                      <label>address</label>
-                                                      <input type="text" class="form-control" placeholder="Company" value="0x1111111" id="userAddress">
+                                                      <label>Public Key</label>
+                                                      <p  id="userAddress"></p>
+                                                  </div>
+                                              </div>
+                                              <div class="col-md-2 pr-1">
+                                                  <div class="form-group">
+                                                      <label>ETH</label>
+                                                      <p id="userBalance"></p>
                                                   </div>
                                               </div>
 
@@ -158,13 +169,13 @@
                                               <div class="col-md-6 pr-1">
                                                   <div class="form-group">
                                                       <label>First Name</label>
-                                                      <input type="text" class="form-control" placeholder="Company" value="Mike">
+                                                      <input type="text" class="form-control" placeholder="Company" value="Alice">
                                                   </div>
                                               </div>
                                               <div class="col-md-6 pl-1">
                                                   <div class="form-group">
                                                       <label>Last Name</label>
-                                                      <input type="text" class="form-control" placeholder="Last Name" value="Andrew">
+                                                      <input type="text" class="form-control" placeholder="Last Name" value="Wonder">
                                                   </div>
                                               </div>
                                           </div>
@@ -239,7 +250,7 @@
                                   <div class="card-body ">
                                     <div>
                                       <button class="btn btn-danger btn-fill btn-block">Notify Tax Authority</button>
-                                      <button class="btn btn-info btn-fill btn-block">Notify company's internal register</button>
+                                      <button class="btn btn-info btn-fill btn-block">Notify Company Register of beneficial ownership</button>
                                     </div>
 
                                   </div>
@@ -322,7 +333,7 @@
                                                   <th>Name</th>
                                                   <th>Address</th>
                                                   <th>City</th>
-                                                  <th>Capital Income Tax</th>
+                                                  <th>Capital Gain Tax</th>
                                                 </tr>
                                               </thead>
                                               <tbody>
@@ -392,12 +403,9 @@
                                 </a>
                             </li>
                         </ul>
-                        <p class="copyright text-center">
-                            ©
-                            <script>
-                                document.write(new Date().getFullYear())
-                            </script>
-                            <a href="">Xavier & Ralph</a>
+                        <p class="copyright text-center" id="copyright">
+
+                            
                         </p>
                     </nav>
                 </div>
@@ -412,22 +420,27 @@
 <script src="./assets/js/core/bootstrap.min.js" type="text/javascript"></script>
 <!--  Plugin for Switches, full documentation here: http://www.jque.re/plugins/version3/bootstrap.switch/ -->
 <script src="./assets/js/plugins/bootstrap-switch.js"></script>
-<!--  Google Maps Plugin    -->
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
 <!--  Chartist Plugin  -->
 <script src="./assets/js/plugins/chartist.min.js"></script>
 <!--  Notifications Plugin    -->
 <script src="./assets/js/plugins/bootstrap-notify.js"></script>
 <!-- Control Center for Light Bootstrap Dashboard: scripts for the example pages etc -->
 <script src="./assets/js/light-bootstrap-dashboard.js?v=2.0.1" type="text/javascript"></script>
-<!-- Light Bootstrap Dashboard DEMO methods, don't include it in your project! -->
-<script src="./assets/js/demo.js"></script>
+
+<script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js/dist/web3.min.js"></script>
+
+<script type="text/javascript" src="./assets/js/truffle-contract.min.js"></script>
+
+
+<script src="./assets/js/toksec.js"></script>
+
 <script type="text/javascript">
     $(document).ready(function() {
-        // Javascript method's body can be found in assets/js/demos.js
-        demo.initDashboardPageCharts();
+      document.getElementById("copyright").innerHTML = "©" + new Date().getFullYear(); + "<a href=''>Xavier & Ralph</a>"
 
-        demo.showNotification();
+      toksec.initWeb3();
+      toksec.initDashboardPageCharts();
+
 
     });
 </script>

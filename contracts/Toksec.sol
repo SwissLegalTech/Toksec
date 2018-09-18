@@ -7,7 +7,7 @@ import 'openzeppelin-solidity/contracts/math/SafeMath.sol';
 import 'openzeppelin-solidity/contracts/token/ERC20/IERC20.sol';
 
 
-contract Toksec is IERC20 {
+contract ToksecBasic is IERC20 {
   using SafeMath for uint256;
 
   mapping (address => uint) private _balances;
