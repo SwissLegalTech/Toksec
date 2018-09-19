@@ -20,9 +20,9 @@ contract Toksec {
 
   event Approval(address indexed owner, address indexed spender, uint256 value );
 
-  constructor(string company, uint256 nbShares) public {
+  constructor(string company, string identifier, uint256 nbShares) public {
     _issuer = msg.sender; // _issuer is identified to msg.sender for simplication purposes
-    _identifier = "FR81939614400019"; 
+    _identifier = identifier; 
     _company = company;
     _balances[msg.sender] = nbShares;
     _totalSupply = nbShares;

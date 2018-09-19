@@ -1,27 +1,48 @@
 # Toksec
+
 Tokenisation of financial instruments with a focus on information of main stakeholders
 
-## tokenised securities
-Etherium currently is the leading technology for tokenising securities. When dealing tokenised securities under the new Etherium standard ERC1400, we thought it would be efficient to have compliance functions embedded. For the time being, we have built notification functions to comply with tax obligations and AML/CFT legislation implementing FATF recommendations (recommendation 24 in particular).
+## Tokenised securities
 
-### embedded compliance while maintaining and even enhancing privacy
-When trading tokenised shares on the Toksec platform, the client can opt to notify his tax authority and/or the register of the beneficial owners of the company whose share have been traded with one click on the relevant button. Privacy on the blockchain level is maintained because the client declares his public keys to the tax authority and/or the company's register of beneficial owners. Privacy can even be enhanced when using multiple public keys.
+Tokenised Securities are the the digital transcription, generally on a blockchain platform, of existing financial titles. On the one hand the conversion to those new platforms induce legal and technical challenges. On the other hand, they are expected to facilitate trading, reduce paperwork, allievate regulatory hurdles, and ultimately reshape existing markets. 
 
-#### publicly available information on the blockchain of any trade in tokenised securities
-The following information of any trade is publicly available:
-- public key of the seller
-- public key of the buyer
-- unit price at the time of sale
-- number of units traded
+## Embedded compliance while maintaining and even enhancing privacy
 
-#### notification to tax authority
-If the client chooses to notify his tax authority, the interface pulls all relevant information from the underlying smart contract, i.e.:
-- public key of the seller
-- identity of the seller (name, first name, address, tax residence)
-- unit price at the time of acquisition
+Toksec is a platform designed to facilitate the trading of tokenised securities with built in notification functions to comply with tax obligations and AML/CFT legislation implementing FATF recommendations (recommendation 24 in particular). When trading tokenised shares on the Toksec platform, only volumes, prices and public keys are stored on the platform. The user can opt to notify his tax authority and/or the register of the beneficial owners of the company whose share have been traded with one click. Privacy is maintained as personnal information and reporting happens only off-chain and on a voluntary basis, as it is the case currently. Privacy can even be enhanced when using multiple public keys.
 
-#### notification to the company's register of beneficial owners
-If the client chooses to notify the register of beneficial owners of the company whose tokenised shares have been traded, the interface pulls all relevant information from the underlying smart contract, i.e.:
-- public key of the buyer
-- identity of the buyer (name, first name, address)
-- time of acquisition
+### Publicly available information on the blockchain of any trade in tokenised securities
+
+In the current implementation, the following information of any trade is publicly available:
+
+- Public key of the seller
+- Public key of the buyer
+- Unit price at the time of sale
+- Number of units traded
+- Date and time of the trade
+
+### Notification to tax authority
+
+If the user chooses to notify his tax authority, the interface pulls all relevant information, i.e.:
+
+- Public key of the seller
+- Identity of the seller (first name, last name, address, tax residence)
+- Unit selling price and at the time of acquisition
+
+#### Notification to the company's register of beneficial owners
+
+If the user chooses to notify the register of beneficial owners of the company whose tokenised shares have been traded, the interface pulls all relevant information, i.e.:
+
+- Public key of the buyer
+- Identity of the buyer (first name, last name, address, country of residence)
+- Time of acquisition
+
+## Technical aspects
+
+Toksec is a web platform in conjuction with an Ethereum Smart Contract. The Smart Contract is compliant with the ERC20 standard and aims to implement the upcoming ERC1400 standard, with additionnal compliance functions. It leverages openzeppelin libraries.
+
+## Contact Us
+
+If you are interested in the project, feel free to contact us :
+
+- Xavier Lavayssière - xavier @ ecan . fr
+- Ralph Sutter - sutter.ralph @ epost . ch
